@@ -1,5 +1,6 @@
 import streamlit
 import pandas
+import requests
 
 streamlit.title('Hello....')
 streamlit.header('Breakfast Menu')
@@ -15,3 +16,10 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(my_fruit_list)
+
+#Display Fruityvice api response
+fruityvice_response = request.get("https://www.fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response.json())
+
+
+
